@@ -1,0 +1,7 @@
+
+    task1.py
+        Detta är en naiv lösning på grunduppgiften utan några som helst optimeringar. Jag
+        skrev den hastigt i måndags innan jag fann modet att försöka använda Go. Jag låter
+        den följa med då det t.ex kan vara intressant att diskutera skillnaden mellan
+        exceptions och errors-as-values.
+

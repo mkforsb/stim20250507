@@ -1,0 +1,21 @@
+{
+    "name": "mikael/task1",
+    "autoload": {
+        "psr-4": {
+            "Mikael\\Task1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mikael Forsberg",
+            "email": "mkforsb@gmail.com"
+        }
+    ],
+    "require": {
+        "fusonic/csv-reader": "^0.5.1",
+        "stil/curl-easy": "^1.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.1"
+    }
+}

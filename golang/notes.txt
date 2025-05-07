@@ -1,0 +1,47 @@
+
+    01_task1
+        En lösning till grunduppgiften utan några som helst försök till optimeringar.
+        Snygg men ineffektiv kedja av Parse(_).filter(f).sum().
+
+        Denna har även lite doc comments samt ett antal tester i task1_test.go, för att
+        visa att jag kan! Jag hoppade över docs och tester i de andra varianterna för
+        att spara lite tid.
+
+    02_task1opt
+        Samma som 01_task1 men slagit samman .filter(f).sum() till .filterSum(f) för
+        att undvika onödig allokering.
+
+    03_skraepdata
+       Samma som 02_task1opt men lägger ett abstraktionslager ovanpå parsning mha ett
+       interface `PayoutReportParser` som sedan implementeras av 3st parsers, varav
+       den sista (`FirstSuccessfulPayoutReportParser`) kan ses som en parser combinator.
+       Denna matas med godtyckligt antal inre parseralternativ att prova i tur och ordning
+       för att svara med antingen första lyckade resultatet eller med ett error om inget av
+       alternativen lyckades med parsningen.
+
+    04_deadline
+       Här försökte jag optimera med parallelisering samt att helt undvika att bygga
+       några `PayoutReport`s för att istället filtrera och summera direkt i CSV-parsern.
+       Det går verkligen inte jättefort hemifrån mig då nedladdningshastigheten på de
+       individuella rapporterna är så låg. Osäker på hur många parallella nedladdningar
+       jag faktiskt uppnår. Blir spännande att prova hos er.
+
+
+
+
+    tankar om "budget"
+        Jag undvek redan från början att ladda in hela rapporter i minnet genom att
+        använda streams / io.Reader, och i `04_deadline` så undviker jag även att bygga
+        någon gigantisk intern lista på `PayoutEntry`, så där kanske jag uppnår några av
+        målen för "budget"?
+
+        Jag funderade även på vad ni tänkt kring "32-bitarsmaskinen", och om ni tänkt att
+        man ska resonera kring problemet där totalsumman kan bli så stor att den inte
+        ryms i ett 32-bitars heltal. Jag skulle försöka lösa det problemet med någon
+        implementation av Binary Coded Decimal där varje siffra lagras individuellt,
+        dvs. så talet 1234 lagras ungefär som [1, 2, 3, 4].
+
+
+
+    tankar om "mönster"
+        Det verkar som summan hos rapport N för 2025-05-05 är exakt 30000000 + N^2 :)

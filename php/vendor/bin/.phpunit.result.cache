@@ -1,0 +1,1 @@
+{"version":1,"defects":{"StrictCSVPayoutReportParserTest::testParseFirstReport":7},"times":{"PayoutReportTest::testFilterSum":0.002,"StrictCSVPayoutReportParserTest::testParseFirstReport":0.396}}
